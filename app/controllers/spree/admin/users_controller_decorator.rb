@@ -12,7 +12,8 @@ Spree::Admin::UsersController.class_eval do
 			end
 			unless params[:seller_id].blank?
 				seller = Spree::Seller.find(params[:seller_id])
-				seller.update_attributes({:user_id => @user.id})
+        seller_user = Spree::SpreeSellerUsers.new(:seller_id => params[:seller_id], :user_id => @user.id)
+        seller_user.save
 				redirect_to admin_sellers_path
 			else
 				flash.now[:success] = Spree.t(:created_successfully)

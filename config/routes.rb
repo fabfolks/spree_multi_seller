@@ -7,8 +7,8 @@ Spree::Core::Engine.routes.draw do
         	end
         	resources :seller_categories do
         	end
-            resources :users do
-            end
+          resources :users do
+          end
         end
     end
 end
