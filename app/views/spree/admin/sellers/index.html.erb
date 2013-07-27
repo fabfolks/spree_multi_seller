@@ -13,7 +13,7 @@
 				<th>Roc Number</th>
 				<th>Address</th>
 				<th colspan=3></th>
-				
+
 			</tr>
 		</thead>
 		<tbody>
@@ -29,7 +29,7 @@
 					<td><%= link_to_edit seller, :no_text => true, :class => 'edit'%></td>
 					<td><%= link_to_delete seller, :no_text => true%></td>
 					<td><%= button_link_to "Add User", new_admin_user_path(:seller_id => seller.id), :icon => 'icon-plus' %></td>
-					
+
 				</tr>
 			<% end%>
 		</tbody>

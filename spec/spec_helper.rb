@@ -1,5 +1,6 @@
 # Run Coverage report
 require 'simplecov'
+require 'spree_multi_seller/factories'
 SimpleCov.start do
   add_group 'Controllers', 'app/controllers'
   add_group 'Helpers', 'app/helpers'
