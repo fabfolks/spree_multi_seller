@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Spree::Seller::StoreAddressesController do
+describe Spree::Admin::StoreAddressesController do
 
 end

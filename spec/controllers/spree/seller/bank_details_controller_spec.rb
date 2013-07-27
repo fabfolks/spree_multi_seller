@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Spree::Seller::BankDetailsController do
+describe Spree::Admin::BankDetailsController do
 
 end
