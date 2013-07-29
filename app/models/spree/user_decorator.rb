@@ -1,6 +1,7 @@
 Spree::User.class_eval do
-	
-	has_one :seller, :dependent => :destroy
+
+  has_one :seller_user
+	has_one :seller, :through => :seller_user, :dependent => :destroy
 
 	scope :seller_user, Spree::User.includes(:spree_roles).where("spree_roles.name = 'seller'")
 	def has_role?(role_in_question)
