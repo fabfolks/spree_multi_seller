@@ -14,7 +14,7 @@ class Spree::SellerAbility
       can :manage, :all
       can :manage, Spree::Order
       can :manage, Spree::Product do |product|
-        Spree::SellerUsers.find_all_by_user_id(user.id).collect(&:seller_id).include? product.seller_id
+        Spree::SellerUser.find_all_by_user_id(user.id).collect(&:seller_id).include? product.seller_id
       end
     end
   end
