@@ -11,10 +11,13 @@ class Spree::SellerAbility
 
     user ||= Spree.user_class.new
     if user.respond_to?(:has_spree_role?) && user.has_spree_role?('seller')
-      can :manage, :all
+      #can :manage, :all
       can :manage, Spree::Order
       can :manage, Spree::Product do |product|
-        Spree::SellerUser.find_all_by_user_id(user.id).collect(&:seller_id).include? product.seller_id
+        product.seller_id = user.seller.id
+      end
+      can :manage, Spree::User do |spree_user|
+        !spree_user.seller.nil? and spree_user.seller.id == user.seller.id
       end
     end
   end
