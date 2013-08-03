@@ -14,11 +14,18 @@ class Spree::SellerAbility
       #can :manage, :all
       can :manage, Spree::Order
       can :manage, Spree::Product do |product|
-        product.seller_id = user.seller.id
+        product.seller_id == user.seller.id
       end
       can :manage, Spree::User do |spree_user|
         !spree_user.seller.nil? and spree_user.seller.id == user.seller.id
       end
+      can :manage, Spree::ProductProperty do |prodcut_property|
+        product_property.product.seller_id == user.seller.id
+      end
+      can :manage, Spree::Variant do |variant|
+        variant.product.seller_id == user.seller.id
+      end
+      can :manage, Spree::Image
     end
   end
 end
