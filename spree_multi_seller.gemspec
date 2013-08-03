@@ -3,12 +3,12 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_multi_seller'
   s.version     = '2.0.0'
-  s.summary     = 'This spre extension is used to create multiple seller with there seperate admin'
-  s.description = 'This spre extension is used to create multiple seller with there seperate admin'
+  s.summary     = 'Engine to enable multi-seller feature in a spree store'
+  s.description = 'Admin can create multiple sellers with special users to manage their products/stock'
   s.required_ruby_version = '>= 1.9.3'
 
-  s.author    = 'Vishal Zambre'
-  s.email     = 'v.zambre@gmail.com'
+  s.author    = 'Sumanth N S, Vishal Zambre'
+  s.email     = 'nsready@gmail.com, v.zambre@gmail.com'
   # s.homepage  = 'http://www.spreecommerce.com'
 
   #s.files       = `git ls-files`.split("\n")
