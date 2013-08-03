@@ -25,7 +25,7 @@ class Spree::SellerAbility
       can :manage, Spree::Variant do |variant|
         variant.product.seller_id == user.seller.id
       end
-      can :manage, Spree::Image
+      can :manage, Spree::Report
     end
   end
 end
