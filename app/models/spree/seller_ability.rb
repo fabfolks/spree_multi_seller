@@ -13,6 +13,10 @@ class Spree::SellerAbility
     if user.respond_to?(:has_spree_role?) && user.has_spree_role?('seller')
       #can :manage, :all
       can :manage, Spree::Order
+      can :manage, Spree::SellerOrder do |order|
+        order.seller_id == user.seller.id
+      end
+      can :create, Spree::Product
       can :manage, Spree::Product do |product|
         product.seller_id == user.seller.id
       end
@@ -26,6 +30,9 @@ class Spree::SellerAbility
         variant.product.seller_id == user.seller.id
       end
       can :manage, Spree::Report
+      can :manage, Spree::OptionType
+      can :manage, Spree::Property
+      can :manage, Spree::Prototype
     end
   end
 end

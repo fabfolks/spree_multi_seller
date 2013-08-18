@@ -1,5 +1,7 @@
 Spree::Core::Engine.routes.draw do
     namespace :admin do
+        resources :seller_orders do
+        end
         resources :sellers do
         	resources :store_addresses do
         	end
@@ -11,4 +13,5 @@ Spree::Core::Engine.routes.draw do
           end
         end
     end
+    match '/admin', :to => 'admin/seller_orders#index', :as => :admin
 end
