@@ -12,7 +12,7 @@ module Spree
         end
 
         def authorize_seller!
-          raise CanCan::AccessDenied unless (spree_current_user.has_spree_role?('admin') or spree_current_user.has_spree_role?('seller'))
+          raise CanCan::AccessDenied unless spree_current_user.has_spree_role?('seller')
         end
     end
   end

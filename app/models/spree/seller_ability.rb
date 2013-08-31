@@ -12,7 +12,6 @@ class Spree::SellerAbility
     user ||= Spree.user_class.new
     if user.respond_to?(:has_spree_role?) && user.has_spree_role?('seller')
       #can :manage, :all
-      can :manage, Spree::Order
       can :manage, Spree::SellerOrder do |order|
         order.seller_id == user.seller.id
       end

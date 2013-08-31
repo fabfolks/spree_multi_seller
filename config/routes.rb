@@ -13,5 +13,4 @@ Spree::Core::Engine.routes.draw do
           end
         end
     end
-    match '/admin', :to => 'admin/seller_orders#index', :as => :admin
 end
