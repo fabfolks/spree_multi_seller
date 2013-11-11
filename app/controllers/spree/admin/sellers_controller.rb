@@ -1,7 +1,7 @@
 module Spree
   module Admin
     class SellersController < Spree::Admin::ResourceController
-    	respond_to :html
+      respond_to :html
       
       def index
       end
@@ -11,7 +11,7 @@ module Spree
       end
 
       def create
-        @seller = Seller.new params[:seller]
+        @seller = Seller.new seller_params
         if @seller.save!
           redirect_to new_admin_seller_store_address_path(@seller)
         else
@@ -24,7 +24,7 @@ module Spree
 
       def update
         @seller = Seller.find(params[:id])
-        if @seller.update_attributes(params[:seller])
+        if @seller.update_attributes(seller_params)
           redirect_to admin_sellers_path, :notice => "Seller updated"
         else
           render "edit"
@@ -32,11 +32,19 @@ module Spree
       end
 
       def destroy
-        @seller = Seller.find(params[:id])
+        @seller = Seller.find(seller_params)
         @seller.destroy
         redirect_to admin_sellers_path, :notice => "Seller Successfully deleted"
       end
 
+    private 
+
+      def seller_params
+        params.require(:seller).permit!
+      end
+
     end
+  
+
   end
 end

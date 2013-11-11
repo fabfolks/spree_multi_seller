@@ -1,10 +1,10 @@
 module Spree
   class Seller < ActiveRecord::Base
-    attr_accessible :name, :address_1, :address_2, :city, :state, :zip, :country_id, :logo, :banner,
-       :roc_number, :business_type_id, :establishment_date, :url, :contact_person_name, :contact_person_email, :phone, :paypal_account_email, :category_ids, :termsandconditions, :is_active, :user_id
+    #attr_accessible :name, :address_1, :address_2, :city, :state, :zip, :country_id, :logo, :banner,
+    #   :roc_number, :business_type_id, :establishment_date, :url, :contact_person_name, :contact_person_email, :phone, :paypal_account_email, :category_ids, :termsandconditions, :is_active, :user_id
 
-    validates_presence_of :name, :address_2, :city, :state, :country_id, :business_type_id, :roc_number, :termsandconditions
-    validates_format_of :contact_person_email, :paypal_account_email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email"   
+    #validates_presence_of :name, :address_2, :city, :state, :country_id#, :business_type_id, :roc_number, :termsandconditions
+    #validates_format_of :contact_person_email, :paypal_account_email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email"   
    
     has_attached_file :logo, :styles => { 
     :small => "100x100>", 

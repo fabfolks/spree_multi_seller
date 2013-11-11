@@ -2,7 +2,7 @@ module Spree
   class SellerOrder < ActiveRecord::Base
     belongs_to :seller
     belongs_to :order
-    attr_accessible :line_item_id, :seller_id, :order_id
+    #attr_accessible :line_item_id, :seller_id, :order_id
 
     def self.create(params)
       unless params[:line_items].nil?
