@@ -1,6 +1,6 @@
 en:
   spree:
-    seller_creted: Seller succesfully created
+    seller_creted: "Seller succesfully created, please wait registration is being reviewed and approved"
     seller_user_not_created: Seller user can not created some errors
     seller_not_created: Seller can't created some errors
     create_seller: register as seller

@@ -12,20 +12,20 @@ module Spree
 
       def create
         @seller = Seller.new seller_params
-        generated_password = Devise.friendly_token.first(8)
+        #generated_password = Devise.friendly_token.first(8)
         if @seller.save!
           #redirect_to new_admin_seller_store_address_path(@seller)
           #redirect_to signup_path(:seller_id => @seller.id)
-         user = Spree::User.new(:email => @seller.contact_person_email, :password => generated_password)
-          if user.save!
-            if current_order
-              session[:guest_token] = nil
-            end
-            flash[:success] = Spree.t(:seller_creted)
-            redirect_back_or_default(root_url)
-           else
-            flash[:alert] = Spree.t(:seller_user_not_created)  
-          end
+         # user = Spree::User.new(:email => @seller.contact_person_email, :password => generated_password)
+          # if user.save!
+          #   if current_order
+          #     session[:guest_token] = nil
+          #   end
+          flash[:success] = Spree.t(:seller_creted)
+          redirect_back_or_default(root_url)
+           # else
+           #  flash[:alert] = Spree.t(:seller_user_not_created)  
+          #end
         else
           flash[:alert] = Spree.t(:seller_not_created)          
           render "new"
