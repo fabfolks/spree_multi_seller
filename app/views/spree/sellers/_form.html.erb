@@ -1,0 +1,50 @@
+<%#= render :partial => 'spree/admin/shared/seller_sub_menu' %>
+
+    <%= f.field_container :name do %>
+    <%= f.label :name, Spree.t(:name) %> <span class="required">*</span><br />
+    <%= f.text_field :name, :class => 'fullwidth title' %>
+    <%= f.error_message_on :name %>
+    <% end %>
+
+    <div data-hook="new_seller_attrs" class="row">
+      <div class="alpha four columns">
+        <%= f.field_container :address_1 do %>
+          <%= f.label :address, "Address" %><span class="required">*</span><br />
+          <%= f.text_field :address_1, :size => 16, :class => 'fullwidth', :required => true %>
+          <%= f.error_message_on :address_1 %>
+        <% end %>
+      </div>
+      <div class="four columns">
+        <%= f.field_container :city do %>
+          <%= f.label :city, "City" %> <span class="required">*</span><br />
+          <%= f.text_field :city, :class => 'fullwidth', :value => "Some city", :readonly => true%>
+          <%= f.error_message_on :city %>
+        <% end %>
+      </div>
+
+
+    </div>
+    <div data-hook="new_seller_attrs_1" class="row">
+      <div class="alpha four columns">
+        <%= f.field_container :contact_person_name do %>
+          <%= f.label :contact_person_name, "Contact Person Name" %><span class="required">*</span><br />
+          <%= f.text_field :contact_person_name, :size => 16, :class => 'fullwidth', :required => true %>
+          <%= f.error_message_on :contact_person_name %>
+        <% end %>
+      </div>
+      <div class="alpha four columns">
+        <%= f.field_container :contact_person_email do %>
+          <%= f.label :contact_person_email, "Contact Person Email" %><span class="required">*</span><br />
+          <%= f.email_field :contact_person_email, :size => 16, :class => 'fullwidth', :required => true %>
+          <%= f.error_message_on :contact_person_email %>
+        <% end %>
+      </div>
+      <div class="alpha four columns">
+        <%= f.field_container :phone do %>
+          <%= f.label :phone, "Contact Number" %><span class="required">*</span><br />
+          <%= f.text_field :phone, :size => 16, :class => 'fullwidth phone', :required => true %>
+          <%= f.error_message_on :phone %>
+        <% end %>
+      </div>
+
+    </div>

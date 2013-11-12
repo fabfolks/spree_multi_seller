@@ -13,4 +13,6 @@ Spree::Core::Engine.routes.draw do
           end
         end
     end
+
+     resources :sellers, only: [:new, :create]
 end

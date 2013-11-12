@@ -6,6 +6,8 @@ module Spree
     #validates_presence_of :name, :address_2, :city, :state, :country_id#, :business_type_id, :roc_number, :termsandconditions
     #validates_format_of :contact_person_email, :paypal_account_email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email"   
    
+    before_save :fill_simple
+
     has_attached_file :logo, :styles => { 
     :small => "100x100>", 
     :medium => "300x300>",
@@ -32,6 +34,15 @@ module Spree
     	address = [self.address_1, self.try(:address_2), "#{self.city} #{self.try(:state)}", "#{self.country.name} #{self.try(:zip)}"].compact
       address.delete("")
       address.join("<br/>")
+    end
+protected
+
+    def fill_simple
+        self.roc_number = 10 unless self.roc_number
+        self.country_id = 67 unless self.country_id
+        self.paypal_account_email = "paypal@pol.com"
+
+        
     end
 
   end

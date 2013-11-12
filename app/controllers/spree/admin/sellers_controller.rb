@@ -13,7 +13,8 @@ module Spree
       def create
         @seller = Seller.new seller_params
         if @seller.save!
-          redirect_to new_admin_seller_store_address_path(@seller)
+          #redirect_to new_admin_seller_store_address_path(@seller)
+          redirect_to new_admin_user_path(:seller_id => @seller.id)
         else
           render "new"
         end
