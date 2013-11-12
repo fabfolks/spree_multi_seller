@@ -21,13 +21,13 @@ module Spree
             if current_order
               session[:guest_token] = nil
             end
-            flash[:success] = Spree.t(:created_successfully)
+            flash[:success] = Spree.t(:seller_creted)
             redirect_back_or_default(root_url)
            else
-            flash[:alert] = Spree.t(:not_created)  
+            flash[:alert] = Spree.t(:seller_user_not_created)  
           end
         else
-          flash[:alert] = Spree.t(:not_created)          
+          flash[:alert] = Spree.t(:seller_not_created)          
           render "new"
         end
       end
