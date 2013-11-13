@@ -12,6 +12,7 @@ Spree::Core::Engine.routes.draw do
           resources :users do
           end
         end
+        get 'sellers/:id/approve' => 'sellers#approve', :as => :seller_approve
     end
 
      resources :sellers, only: [:new, :create]

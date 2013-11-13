@@ -38,6 +38,18 @@ module Spree
         redirect_to admin_sellers_path, :notice => "Seller Successfully deleted"
       end
 
+      def approve
+        @seller = Seller.find(params[:id])
+
+        if @seller.approve_seller
+          flash[:sucess] = Spree.t(:seller_approved)
+          redirect_to admin_sellers_path
+        else
+          flash[:alert] = Spree.t(:seller_not_approved)
+          redirect_to admin_sellers_path
+        end
+      end
+
     private 
 
       def seller_params
