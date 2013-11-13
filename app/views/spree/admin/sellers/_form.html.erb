@@ -23,7 +23,7 @@
       <div class="four columns">
         <%= f.field_container :city do %>
           <%= f.label :city, "City" %> <span class="required">*</span><br />
-          <%= f.text_field :city, :class => 'fullwidth', :value => "Singapore", :readonly => true%>
+          <%= f.text_field :city, :class => 'fullwidth' %>
           <%= f.error_message_on :city %>
         <% end %>
       </div>
@@ -52,11 +52,5 @@
         <% end %>
       </div>
 
-      <div class="alpha four columns">
-        <%= f.field_container :is_active do %>
-          <%= f.check_box :is_active, :required => true %>
-          <%= f.label :is_active, "Approved" %>
-          <%= f.error_message_on :is_active %>
-        <% end %> 
       </div>
     </div>
