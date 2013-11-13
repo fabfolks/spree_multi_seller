@@ -42,7 +42,7 @@ module Spree
         @seller = Seller.find(params[:id])
 
         if @seller.approve_seller
-          flash[:sucess] = Spree.t(:seller_approved)
+          flash[:success] = Spree.t(:seller_approved)
           redirect_to admin_sellers_path
         else
           flash[:alert] = Spree.t(:seller_not_approved)

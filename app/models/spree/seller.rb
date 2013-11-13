@@ -43,7 +43,7 @@ module Spree
 		#scope :is_active, where(:is_active => true)
 
 		def address
-			address = [self.address_1, self.try(:address_2), "#{self.city} #{self.try(:state)}", "#{self.country.name} #{self.try(:zip)}"].compact
+			address = [self.address_1, self.try(:address_2), "#{self.city} #{self.try(:state)}", "#{self.try(:zip)}"].compact
 			address.delete("")
 			address.join("<br/>")
 		end
