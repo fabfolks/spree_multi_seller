@@ -16,15 +16,15 @@ module Spree
 		:large => "500x500>" }, 
 		:default_url => "/assets/ship.li/logo.png"
 
-		has_attached_file :banner, :styles => { 
-		:small => "100x100>", 
-		:medium => "300x300>",
-		:large => "500x500>" }, 
-		:default_url => "/assets/ship.li/banner.png"
+		# has_attached_file :banner, :styles => { 
+		# :small => "100x100>", 
+		# :medium => "300x300>",
+		# :large => "500x500>" }, 
+		# :default_url => "/assets/ship.li/banner.png"
 
 		belongs_to  :country
 		
-		has_many    :users, :through => :seller_user
+		has_and_belongs_to_many :users, :join_table => "spree_seller_users"
 
 		belongs_to  :business_type
 		has_many    :products, :dependent => :destroy
