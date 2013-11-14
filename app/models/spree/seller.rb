@@ -65,7 +65,7 @@ module Spree
       end
     end
     def unapprove_seller
-			self.is_active = true
+			self.is_active = false
 			deliver_approve_email
 		end
 		
