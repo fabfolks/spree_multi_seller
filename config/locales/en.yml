@@ -7,5 +7,8 @@ en:
     seller_approve: approve
     seller_unapprove: unapprove
     seller_approved: "Seller approved and E-mail sended"
-    seller_not_approved: "Seller NOT approved and E-mail sended"
-    subject_approve: "approved seller"
+    seller_unapproved: "Seller unapproved and E-mail sended"
+    seller_not_approved: "Seller NOT approved and E-mail NOT sended"
+    seller_not_unapproved: "Seller NOT unapproved and E-mail NOT sended"
+    subject_approve: "Approved seller"
+    subject_unapprove: "Unapproved seller"

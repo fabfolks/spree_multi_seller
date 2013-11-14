@@ -2,16 +2,10 @@
 
     <%= f.field_container :name do %>
     <%= f.label :name, Spree.t(:name) %> <span class="required">*</span><br />
-    <%= f.text_field :name, :class => 'fullwidth title', :required => true %>
+    <%= f.text_field :name, :class => 'fullwidth title' %>
     <%= f.error_message_on :name %>
     <% end %>
 
-    <!-- <div class="four columns"> -->
-      <%#= f.field_container :user_id do %>
-        <%#= f.label :user, "Email Id" %><span class="required">*</span><br />
-        <%#= f.collection_select :user_id, Spree::User.seller_user, :id, :email, {}, {:class => 'select2 fullwidth'}%>
-      <% #end %>
-    <!-- </div> -->
     <div data-hook="new_seller_attrs" class="row">
       <div class="alpha four columns">
         <%= f.field_container :address_1 do %>
@@ -51,6 +45,13 @@
           <%= f.error_message_on :phone %>
         <% end %>
       </div>
-
+    </div>
+    <div data-hook="new_seller_message_1" class="row">
+      <div class="alpha eleven columns">
+        <%= f.field_container :message do %>
+          <%= f.label :message, "Message for approve or unapprove" %></span><br />
+          <%= f.text_area :message, :cols => 60, :rows => 10, :class => 'fullwidth message'%>
+          <%= f.error_message_on :message %>
+        <% end %>
       </div>
     </div>

@@ -55,9 +55,23 @@ module Spree
 			self.is_active = true
 			deliver_approve_email
 		end
+
 		def deliver_approve_email
       begin
         Spree::ApproveMailer.approve_email(self.id).deliver
+      rescue Exception => e
+        logger.error("#{e.class.name}: #{e.message}")
+        logger.error(e.backtrace * "\n")
+      end
+    end
+    def unapprove_seller
+			self.is_active = true
+			deliver_approve_email
+		end
+		
+		def deliver_unapprove_email
+      begin
+        Spree::ApproveMailer.unapprove_email(self.id).deliver
       rescue Exception => e
         logger.error("#{e.class.name}: #{e.message}")
         logger.error(e.backtrace * "\n")
