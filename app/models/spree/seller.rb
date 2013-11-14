@@ -23,11 +23,12 @@ module Spree
 
 
 
-		has_attached_file :logo, :styles => { 
-		:small => "100x100>", 
-		:medium => "300x300>",
-		:large => "500x500>" }, 
-		:default_url => "/assets/ship.li/logo.png"
+		has_attached_file :logo,
+      styles: { mini: '100x100>', normal: '300x300>' },
+      default_style: :mini,
+      url: '/spree/sellers/:id/:style/:basename.:extension',
+      path: ':rails_root/public/spree/sellers/:id/:style/:basename.:extension',
+      default_url: '/assets/default_seller.png'
 
 		# has_attached_file :banner, :styles => { 
 		# :small => "100x100>", 
@@ -54,6 +55,14 @@ module Spree
 			self.is_active = true
 			deliver_approve_email
 		end
+		def deliver_approve_email
+      begin
+        Spree::ApproveMailer.approve_email(self.id).deliver
+      rescue Exception => e
+        logger.error("#{e.class.name}: #{e.message}")
+        logger.error(e.backtrace * "\n")
+      end
+    end
 
 	protected
 		def fill_simple
@@ -86,14 +95,6 @@ module Spree
 
 		end
 
-		def deliver_approve_email
-      begin
-        ApproveMailer.approve_email(self.id).deliver
-      rescue Exception => e
-        logger.error("#{e.class.name}: #{e.message}")
-        logger.error(e.backtrace * "\n")
-      end
-    end
 
 	end
 end

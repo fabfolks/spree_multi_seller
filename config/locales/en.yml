@@ -5,6 +5,7 @@ en:
     seller_not_created: Seller can't created some errors
     create_seller: register as seller
     seller_approve: approve
+    seller_unapprove: unapprove
     seller_approved: "Seller approved and E-mail sended"
     seller_not_approved: "Seller NOT approved and E-mail sended"
     subject_approve: "approved seller"

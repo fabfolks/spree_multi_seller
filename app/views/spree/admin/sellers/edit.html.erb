@@ -3,12 +3,14 @@
   <fieldset data-hook="edit_seller">
     <legend align="center">Edit Seller</legend>
       <%= render :partial => "form", :locals => {:f => f} %>
+      <%= render :partial => "unapprove" %>
       <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= link_to_modal "Demo Form", "#unapprove-form", :class=>"button" %>
         <%= link_to_with_icon 'icon-ok', Spree.t('seller_approve'), admin_seller_approve_path, :class => 'button' %>
+        <%= link_to_with_icon 'icon-remove', Spree.t('seller_unapprove'), admin_seller_approve_path, :class => 'button' %>
         <%= button "Update", 'icon-ok' %>
         <span class="or"><%= Spree.t(:or) %></span>
         <%= link_to_with_icon 'icon-remove', Spree.t('actions.cancel'), admin_sellers_path, :class => 'button' %>
-
       </div>
   </fieldset>
 <%end%>
