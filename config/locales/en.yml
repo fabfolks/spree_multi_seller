@@ -13,3 +13,4 @@ en:
     subject_approve: "Approved seller"
     subject_unapprove: "Unapproved seller"
     logo: "seller logo"
+    seller_unapproved_login: "Please wait admin approve seller"

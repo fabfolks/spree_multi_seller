@@ -52,7 +52,7 @@ module Spree
 		end
 
 		def approve_seller
-			self.is_active = true
+			self.update_attributes(:is_active => true)
 			deliver_approve_email
 		end
 
@@ -65,7 +65,8 @@ module Spree
       end
     end
     def unapprove_seller
-			self.is_active = false
+			#self.is_active = false
+			self.update_attributes(:is_active => false)
 			deliver_unapprove_email
 		end
 
