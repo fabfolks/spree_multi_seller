@@ -12,7 +12,7 @@ class Spree::SellerAbility
     user ||= Spree.user_class.new
     if user.respond_to?(:has_spree_role?) && user.has_spree_role?('seller')
 
-      # can :manage, :all
+      #can :admin, :all
 
       # cannot :manage, Spree::Promotion
       # cannot :manage, Spree::Seller
@@ -22,25 +22,34 @@ class Spree::SellerAbility
         can :index, Spree::Order
         can :show, Spree::Order
         can :admin, Spree::Order
+        can :manage, Spree::Order
 
         can :index, Spree::Product
         can :show, Spree::Product
         can :admin, Spree::Product
+        can :manage, Spree::Product
 
+        can :index, Spree::Variant
+        can :show, Spree::Variant
+        can :admin, Spree::Variant
+        can :manage, Spree::Variant
+
+        can :index, Spree::Preference
+        can :show, Spree::Preference
+        can :admin, Spree::Preference
+        
+        can :index, Spree::Taxon
+        can :index, Spree::Taxonomy
+        
         # #can :index, Spree::Admin::Reports
         # can :manage, Spree::Report
         # can :show, Spree::Report
         # #can :admin, Spree::Admin::Reports
 
         # #can :manage, Spree::Variant
-        # can :index, Spree::Variant
-        # can :show, Spree::Variant
-        # can :admin, Spree::Variant
 
         # can :manage, Spree::Adjustment
 
-        # can :index, Spree::Taxon
-        # can :index, Spree::Taxonomy
         #manage
 
       # can :manage, Spree::SellerOrder do |order|
@@ -53,9 +62,9 @@ class Spree::SellerAbility
       can :manage, Spree::Seller
 
 
-      can :manage, Spree::User do |spree_user|
-        !spree_user.seller.nil? and spree_user.seller.id == user.seller.id
-      end
+      # can :manage, Spree::User do |spree_user|
+      #   !spree_user.seller.nil? and spree_user.seller.id == user.seller.id
+      # end
 
       can :manage, Spree::ProductProperty do |prodcut_property|
         product_property.product.seller_id == user.seller.id

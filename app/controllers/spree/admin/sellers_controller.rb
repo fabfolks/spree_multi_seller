@@ -4,6 +4,9 @@ module Spree
       respond_to :html
       
       def index
+        if spree_current_user.has_role?('seller')
+          @sellers = Spree::Seller.where(:id => spree_current_user.seller.id)
+        end
       end
 
 
