@@ -25,8 +25,24 @@ module Spree
 
       def update
         @seller = Seller.find(params[:id])
+        button = params[:button]
         if @seller.update_attributes(seller_params)
-          redirect_to admin_sellers_path, :notice => "Seller updated"
+          if button == "approve"
+            if @seller.approve_seller
+              flash[:success] = Spree.t(:seller_approved)
+            else
+              flash[:alert] = Spree.t(:seller_not_approved)
+            end
+          elsif button == "unapprove"
+            if @seller.unapprove_seller
+              flash[:success] = Spree.t(:seller_unapproved)
+              else
+              flash[:alert] = Spree.t(:seller_not_unapproved)
+            end
+          else
+            flash[:success] = "Seller updated"
+          end
+          redirect_to admin_sellers_path
         else
           render "edit"
         end

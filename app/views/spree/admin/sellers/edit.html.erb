@@ -5,12 +5,12 @@
       <%= render :partial => "form", :locals => {:f => f} %>
       <div class="form-buttons filter-actions actions" data-hook="buttons">
         <% if spree_current_user.has_spree_role?('admin') %>
-          <%= link_to_with_icon 'icon-ok', Spree.t('seller_approve'), admin_seller_approve_path, :class => 'button' %>
+          <%= button Spree.t('seller_approve'), 'icon-ok', '', :value => "approve" %>
           <span class="or"><%= Spree.t(:or) %></span>
-          <%= link_to_with_icon 'icon-remove', Spree.t('seller_unapprove'), admin_seller_unapprove_path, :class => 'button' %>
+          <%= button Spree.t('seller_unapprove'), 'icon-remove', '', :value => "unapprove" %>
           <span class="or"><%= Spree.t(:or) %></span>
         <% end %>
-        <%= button "Update", 'icon-ok' %>
+        <%= button "Update", 'icon-ok', '', :value => "Update" %>
         <span class="or"><%= Spree.t(:or) %></span>
         <%= link_to_with_icon 'icon-remove', Spree.t('actions.cancel'), admin_sellers_path, :class => 'button' %>
       </div>
