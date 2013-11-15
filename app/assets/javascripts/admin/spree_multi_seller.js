@@ -1,6 +1,4 @@
 //= require admin/spree_backend
-//= require jquery.ui.all
-//= require jquery.modal
 
 
 $(document).ready(function(){
