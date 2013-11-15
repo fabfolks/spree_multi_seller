@@ -17,9 +17,11 @@ module Spree
 		has_many    :seller_categories, :dependent => :destroy
 		has_many    :taxonomies, :through => :seller_categories
 		has_one     :bank_detail
+		has_many    :stock_locations, :dependent => :destroy
+
 
 		before_save :fill_simple
-		after_create :create_user
+		after_create :create_user, :create_stock_location
 
 
 
@@ -48,8 +50,6 @@ module Spree
 			address.delete("")
 			address.join("<br/>")
 		end
-
-
 
 		def approve_seller
 			self.is_active = true
@@ -107,6 +107,11 @@ module Spree
 				self.users << user
 			end
 
+		end
+		def create_stock_location
+			stock = Spree::StockLocation.new(:name => "default_seller_stock")
+			stock.seller = self
+			stock.save!
 		end
 
 

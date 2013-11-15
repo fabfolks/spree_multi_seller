@@ -51,6 +51,9 @@
         <% end %>
       </div>
     </div>
+    <div data-hook="store locations" class="row">
+      <%= link_to Spree.t("stock_locations"), admin_stock_locations_path %>
+    </div>
     <% if spree_current_user.has_spree_role?('admin') %>
       <div data-hook="new_seller_message_1" class="row">
         <div class="alpha eleven columns">
