@@ -1,0 +1,22 @@
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
+
+<h1><%= t(:editing_user) %></h1>
+
+<%= form_for @user, :url => spree.user_path(@user), :method => :put do |f| %>
+  <%= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
+  <p>
+    <%= f.submit Spree.t(:update), :class => 'button primary' %>
+  </p>
+<% end %>
+
+
+
+<%= form_for [:admin, @user.seller], :html => { :multipart => true } do |f| %>
+  <fieldset data-hook="edit_seller">
+    <legend align="center">Edit Seller</legend>
+      <%= render :partial => "spree/sellers/form", :locals => {:f => f} %>
+      <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button Spree.t(:update), 'icon-ok' %>
+      </div>
+  </fieldset>
+<%end%>

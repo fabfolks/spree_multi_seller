@@ -17,12 +17,16 @@
       <div class="four columns">
         <%= f.field_container :city do %>
           <%= f.label :city, "City" %> <span class="required">*</span><br />
-          <%= f.text_field :city, :class => 'fullwidth', :value => "Some city", :readonly => true%>
+          <%= f.text_field :city, :class => 'fullwidth'%>
           <%= f.error_message_on :city %>
         <% end %>
       </div>
-
-
+      <div class="four columns">
+        <%= f.field_container :logo do %>
+          <%= f.label :logo, Spree.t(:logo) %><br />
+          <%= f.file_field :logo %>
+        <% end %>
+      </div>
     </div>
     <div data-hook="new_seller_attrs_1" class="row">
       <div class="alpha four columns">

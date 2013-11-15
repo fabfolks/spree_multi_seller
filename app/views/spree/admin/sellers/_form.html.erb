@@ -21,7 +21,12 @@
           <%= f.error_message_on :city %>
         <% end %>
       </div>
-
+      <div class="four columns">
+        <%= f.field_container :logo do %>
+          <%= f.label :logo, Spree.t(:logo) %><br />
+          <%= f.file_field :logo %>
+        <% end %>
+      </div>
     </div>
     <div data-hook="new_seller_attrs_1" class="row">
       <div class="alpha four columns">
@@ -46,12 +51,14 @@
         <% end %>
       </div>
     </div>
-    <div data-hook="new_seller_message_1" class="row">
-      <div class="alpha eleven columns">
-        <%= f.field_container :message do %>
-          <%= f.label :message, "Message for approve or unapprove" %></span><br />
-          <%= f.text_area :message, :cols => 60, :rows => 10, :class => 'fullwidth message'%>
-          <%= f.error_message_on :message %>
-        <% end %>
+    <% if spree_current_user.has_spree_role?('admin') %>
+      <div data-hook="new_seller_message_1" class="row">
+        <div class="alpha eleven columns">
+          <%= f.field_container :message do %>
+            <%= f.label :message, "Message for approve or unapprove" %></span><br />
+            <%= f.text_area :message, :cols => 60, :rows => 10, :class => 'fullwidth message'%>
+            <%= f.error_message_on :message %>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>

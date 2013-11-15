@@ -7,7 +7,7 @@ module Spree
 	#   :roc_number, :business_type_id, :establishment_date, :url, :contact_person_name, :contact_person_email, :phone, :paypal_account_email, :category_ids, :termsandconditions, :is_active, :user_id
 
 	#validates_presence_of :name, :address_2, :city, :state, :country_id#, :business_type_id, :roc_number, :termsandconditions
-	#validates_format_of :contact_person_email, :paypal_account_email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email"   
+	#validates_format_of :contact_person_email, :paypal_account_email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email"
 		has_and_belongs_to_many :users, :join_table => "spree_seller_users"
 
 		belongs_to  :country
@@ -30,15 +30,15 @@ module Spree
       path: ':rails_root/public/spree/sellers/:id/:style/:basename.:extension',
       default_url: '/assets/default_seller.png'
 
-		# has_attached_file :banner, :styles => { 
-		# :small => "100x100>", 
+		# has_attached_file :banner, :styles => {
+		# :small => "100x100>",
 		# :medium => "300x300>",
-		# :large => "500x500>" }, 
+		# :large => "500x500>" },
 		# :default_url => "/assets/ship.li/banner.png"
 
 
 		alias_attribute :email, :contact_person_email
-		
+
 
 
 		#scope :is_active, where(:is_active => true)
@@ -68,7 +68,7 @@ module Spree
 			self.is_active = false
 			deliver_approve_email
 		end
-		
+
 		def deliver_unapprove_email
       begin
         Spree::ApproveMailer.unapprove_email(self.id).deliver
@@ -105,7 +105,7 @@ module Spree
 			user.spree_roles = [role]
 			if user.save!
 				self.users << user
-			end 
+			end
 
 		end
 
