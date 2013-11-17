@@ -80,6 +80,7 @@ module Spree
     end
 
 	protected
+
 		def fill_simple
 			self.roc_number = 10 unless self.roc_number
 			self.country_id = 67 unless self.country_id
@@ -111,6 +112,7 @@ module Spree
 		end
 		def create_stock_location
 			stock = Spree::StockLocation.new(:name => "default_seller_stock")
+			#debugger
 			stock.seller = self
 			stock.save!
 		end
