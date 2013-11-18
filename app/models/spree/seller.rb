@@ -11,16 +11,17 @@ module Spree
 		has_and_belongs_to_many :users, :join_table => "spree_seller_users"
 
 		belongs_to  :country
-		belongs_to  :business_type
+		#belongs_to  :business_type
 		has_many    :products, :dependent => :destroy
-		has_many    :stores, :class_name => "Spree::StoreAddress", :dependent => :destroy
-		has_many    :seller_categories, :dependent => :destroy
-		has_many    :taxonomies, :through => :seller_categories
-		has_one     :bank_detail
+		#has_many    :stores, :class_name => "Spree::StoreAddress", :dependent => :destroy
+		#has_many    :seller_categories, :dependent => :destroy
+		#has_many    :taxonomies, :through => :seller_categories
+		#has_one     :bank_detail
 		has_many    :stock_locations, :dependent => :destroy
+		belongs_to  :owner, :class_name => "Spree::User"
 
 
-		before_save :fill_simple
+		before_save :fill_simple, :add_owner
 		after_create :create_user, :create_stock_location, :deliver_welcome_email
 
 
@@ -89,6 +90,10 @@ module Spree
     end
 
 	protected
+
+		def add_owner
+			self.owner = spree_current_user			
+		end
 
 		def fill_simple
 			self.roc_number = 10 unless self.roc_number
