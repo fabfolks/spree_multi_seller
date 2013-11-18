@@ -39,7 +39,10 @@ class Spree::SellerAbility
         can :admin, Spree::Preference
         
         can :index, Spree::Taxon
+        can :show, Spree::Taxon
         can :index, Spree::Taxonomy
+        can :index, Spree::Taxonomy
+
 
         can :index, Spree::StockLocation
         can :show, Spree::StockLocation
