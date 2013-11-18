@@ -45,6 +45,11 @@ class Spree::SellerAbility
         can :show, Spree::StockLocation
         can :admin, Spree::StockLocation
         can :manage, Spree::StockLocation
+
+        can :index, Spree::Image
+        can :show, Spree::Image
+        can :admin, Spree::Image
+        can :manage, Spree::Image
         
         # #can :index, Spree::Admin::Reports
         # can :manage, Spree::Report

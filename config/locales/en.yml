@@ -10,6 +10,7 @@ en:
     seller_unapproved: "Seller unapproved and E-mail sended"
     seller_not_approved: "Seller NOT approved and E-mail NOT sended"
     seller_not_unapproved: "Seller NOT unapproved and E-mail NOT sended"
+    subject_welcome: "Welcome new seller"
     subject_approve: "Approved seller"
     subject_unapprove: "Unapproved seller"
     logo: "seller logo"

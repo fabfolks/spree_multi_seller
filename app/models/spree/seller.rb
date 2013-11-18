@@ -21,7 +21,7 @@ module Spree
 
 
 		before_save :fill_simple
-		after_create :create_user, :create_stock_location
+		after_create :create_user, :create_stock_location, :deliver_welcome_email
 
 
 
@@ -73,6 +73,15 @@ module Spree
 		def deliver_unapprove_email
       begin
         Spree::ApproveMailer.unapprove_email(self.id).deliver
+      rescue Exception => e
+        logger.error("#{e.class.name}: #{e.message}")
+        logger.error(e.backtrace * "\n")
+      end
+    end
+
+		def deliver_welcome_email
+      begin
+        Spree::ApproveMailer.welcome_email(self.id).deliver
       rescue Exception => e
         logger.error("#{e.class.name}: #{e.message}")
         logger.error(e.backtrace * "\n")

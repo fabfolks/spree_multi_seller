@@ -6,6 +6,17 @@
     <%= f.error_message_on :name %>
     <% end %>
 
+    <div data-hook="new_seller_desription_1" class="row">
+      <div class="alpha">
+        <%= f.field_container :description do %>
+          <%= f.label :description, "description" %></span><br />
+          <%= f.text_area :description, :cols => 10, :rows => 5, :class => 'fullwidth description'%>
+          <%= f.error_message_on :description %>
+        <% end %>
+      </div>
+    </div>
+
+
     <div data-hook="new_seller_attrs" class="row">
       <div class="alpha four columns">
         <%= f.field_container :address_1 do %>
