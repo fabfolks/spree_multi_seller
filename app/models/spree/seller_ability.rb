@@ -22,7 +22,9 @@ class Spree::SellerAbility
         can :index, Spree::Order
         can :show, Spree::Order
         can :admin, Spree::Order
-        can :manage, Spree::Order
+        cannot :create, Spree::Order
+        cannot :destroy, Spree::Order 
+        #can :manage, Spree::Order
 
         can :index, Spree::Product
         can :show, Spree::Product

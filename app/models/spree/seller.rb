@@ -18,6 +18,7 @@ module Spree
 		#has_many    :taxonomies, :through => :seller_categories
 		#has_one     :bank_detail
 		has_many    :stock_locations, :dependent => :destroy
+
 		belongs_to  :owner, :class_name => "Spree::User"
 
 
@@ -60,6 +61,16 @@ module Spree
 			deliver_approve_email
 		end
 
+    def unapprove_seller(user)
+			#self.is_active = false
+			self.update_attributes(:is_active => false)
+			add_owner(user)
+			self.users.each {|h| h.destroy}
+			deliver_unapprove_email
+		end
+
+	protected
+
 		def deliver_approve_email
       begin
         Spree::ApproveMailer.approve_email(self.id).deliver
@@ -68,12 +79,6 @@ module Spree
         logger.error(e.backtrace * "\n")
       end
     end
-    def unapprove_seller(user)
-			#self.is_active = false
-			self.update_attributes(:is_active => false)
-			add_owner(user)
-			deliver_unapprove_email
-		end
 
 		def deliver_unapprove_email
       begin
@@ -83,7 +88,6 @@ module Spree
         logger.error(e.backtrace * "\n")
       end
     end
-
 		def deliver_welcome_email
       begin
         Spree::ApproveMailer.welcome_email(self.id).deliver
@@ -92,11 +96,8 @@ module Spree
         logger.error(e.backtrace * "\n")
       end
     end
-
-	protected
-
 		def add_owner(user)
-			self.owner = user
+			self.update_attributes(:owner => user)
 		end
 
 		def fill_simple
