@@ -21,8 +21,8 @@ module Spree
 		belongs_to  :owner, :class_name => "Spree::User"
 
 
-		before_save :fill_simple, :add_owner
-		after_create :create_user, :create_stock_location, :deliver_welcome_email
+		before_save :fill_simple
+		after_create  :deliver_welcome_email
 
 
 
@@ -52,8 +52,11 @@ module Spree
 			address.join("<br/>")
 		end
 
-		def approve_seller
+		def approve_seller(user)
 			self.update_attributes(:is_active => true)
+			add_owner(user)
+			create_user 
+			create_stock_location
 			deliver_approve_email
 		end
 
@@ -65,9 +68,10 @@ module Spree
         logger.error(e.backtrace * "\n")
       end
     end
-    def unapprove_seller
+    def unapprove_seller(user)
 			#self.is_active = false
 			self.update_attributes(:is_active => false)
+			add_owner(user)
 			deliver_unapprove_email
 		end
 
@@ -91,8 +95,8 @@ module Spree
 
 	protected
 
-		def add_owner
-			self.owner = spree_current_user			
+		def add_owner(user)
+			self.owner = user
 		end
 
 		def fill_simple
@@ -118,6 +122,9 @@ module Spree
 			#puts self.contact_person_email
 			user = Spree::User.new(:email => self.contact_person_email, :password => generated_password)
 			#puts(role)
+			user.reset_password_sent_at = Time.now
+			user.reset_password_token= Spree::User.reset_password_token
+
 			user.spree_roles = [role]
 			if user.save!
 				self.users << user

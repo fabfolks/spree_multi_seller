@@ -31,13 +31,13 @@ module Spree
         button = params[:button]
         if @seller.update_attributes(seller_params)
           if button == "approve"
-            if @seller.approve_seller
+            if @seller.approve_seller(spree_current_user)
               flash[:success] = Spree.t(:seller_approved)
             else
               flash[:alert] = Spree.t(:seller_not_approved)
             end
           elsif button == "unapprove"
-            if @seller.unapprove_seller
+            if @seller.unapprove_seller(spree_current_user)
               flash[:success] = Spree.t(:seller_unapproved)
               else
               flash[:alert] = Spree.t(:seller_not_unapproved)
@@ -52,7 +52,7 @@ module Spree
       end
 
       def destroy
-        @seller = Seller.find(seller_params)
+        @seller = Seller.find(params[:id])
         @seller.destroy
         redirect_to admin_sellers_path, :notice => "Seller Successfully deleted"
       end
