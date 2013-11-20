@@ -22,12 +22,12 @@ module Spree
           #     session[:guest_token] = nil
           #   end
           flash[:success] = Spree.t(:seller_creted)
-          redirect_back_or_default(root_url)
+          redirect_to ("/welcome")
            # else
-           #  flash[:alert] = Spree.t(:seller_user_not_created)  
+           #  flash[:alert] = Spree.t(:seller_user_not_created)
           #end
         else
-          flash[:alert] = Spree.t(:seller_not_created)          
+          flash[:alert] = Spree.t(:seller_not_created)
           render "new"
         end
       end
@@ -50,7 +50,7 @@ module Spree
       #   redirect_to admin_sellers_path, :notice => "Seller Successfully deleted"
       # end
 
-  private 
+  private
 
       def seller_params
         params.require(:seller).permit!

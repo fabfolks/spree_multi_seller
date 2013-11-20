@@ -8,8 +8,8 @@ module Spree
 
 	#validates_presence_of :name, :address_2, :city, :state, :country_id#, :business_type_id, :roc_number, :termsandconditions
 	#validates_format_of :contact_person_email, :paypal_account_email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email"
-		has_and_belongs_to_many :users, :join_table => "spree_seller_users"
 
+		has_and_belongs_to_many :users, :join_table => "spree_seller_users"
 		belongs_to  :country
 		#belongs_to  :business_type
 		has_many    :products, :dependent => :destroy
@@ -18,9 +18,9 @@ module Spree
 		#has_many    :taxonomies, :through => :seller_categories
 		#has_one     :bank_detail
 		has_many    :stock_locations, :dependent => :destroy
-
 		belongs_to  :owner, :class_name => "Spree::User"
 
+		validates :contact_person_email, uniqueness: true, :on => :create
 
 		before_save :fill_simple
 		after_create  :deliver_welcome_email

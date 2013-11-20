@@ -2,7 +2,7 @@ module Spree
   module Admin
     class SellersController < Spree::Admin::ResourceController
       respond_to :html
-      
+
       def index
         if spree_current_user.has_role?('seller')
           @sellers = Spree::Seller.where(:id => spree_current_user.seller.id)
@@ -57,40 +57,14 @@ module Spree
         redirect_to admin_sellers_path, :notice => "Seller Successfully deleted"
       end
 
-      # def approve
-      #   @seller = Seller.find(params[:id])
-      #   # @seller.update_attributes(:message => params[:message])
-        
-      #   if @seller.approve_seller
-      #     flash[:success] = Spree.t(:seller_approved)
-      #     redirect_to admin_sellers_path
-      #   else
-      #     flash[:alert] = Spree.t(:seller_not_approved)
-      #     redirect_to admin_sellers_path
-      #   end
-      # end
-  
-      # def unapprove
-
-      #   @seller = Seller.find(params[:id])
-
-      #   if @seller.unapprove_seller
-      #     flash[:success] = Spree.t(:seller_unapproved)
-      #     redirect_to admin_sellers_path
-      #   else
-      #     flash[:alert] = Spree.t(:seller_not_unapproved)
-      #     redirect_to admin_sellers_path
-      #   end
-      # end
-
-    private 
+    private
 
       def seller_params
         params.require(:seller).permit!
       end
 
     end
-  
+
 
   end
 end
