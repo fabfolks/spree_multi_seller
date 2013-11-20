@@ -13,7 +13,9 @@ module Spree
       def create
         @seller = Seller.new seller_params
         #generated_password = Devise.friendly_token.first(8)
-        if @seller.save!
+        if @seller.valid?
+          @seller.save!
+          debugger
           #redirect_to new_admin_seller_store_address_path(@seller)
           #redirect_to signup_path(:seller_id => @seller.id)
          # user = Spree::User.new(:email => @seller.contact_person_email, :password => generated_password)
