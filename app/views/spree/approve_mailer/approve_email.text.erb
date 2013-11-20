@@ -3,6 +3,9 @@
 Bozor approved seller <%= @seller.email %>
 
 Please visit reset password url
+
+You user name: <%= @seller.email %>
+
 Link for create password:
 <%= edit_password_url(@seller.users.last, :reset_password_token => @seller.users.last.reset_password_token, :host => Spree::Config.site_url)%>
 
