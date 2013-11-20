@@ -69,6 +69,9 @@ module Spree
 			deliver_unapprove_email
 		end
 
+		def add_owner(user)
+			self.update_attributes(:owner => user)
+		end
 	protected
 
 		def deliver_approve_email
@@ -96,9 +99,6 @@ module Spree
         logger.error(e.backtrace * "\n")
       end
     end
-		def add_owner(user)
-			self.update_attributes(:owner => user)
-		end
 
 		def fill_simple
 			self.roc_number = 10 unless self.roc_number
