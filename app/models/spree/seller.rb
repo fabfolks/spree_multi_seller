@@ -21,11 +21,10 @@ module Spree
 		belongs_to  :owner, :class_name => "Spree::User"
 
 		validates :contact_person_email, uniqueness: true, :on => :create
+		validates_presence_of :name
 
 		before_save :fill_simple
 		after_create  :deliver_welcome_email
-
-
 
 		has_attached_file :logo,
       styles: { mini: '100x100>', normal: '300x300>' },
@@ -133,7 +132,7 @@ module Spree
 
 		end
 		def create_stock_location
-			stock = Spree::StockLocation.new(:name => "default_seller_stock")
+			stock = Spree::StockLocation.new(:name => self.name + "default stock", :propagate_all_variants => false)
 			#debugger
 			stock.seller = self
 			stock.save!

@@ -43,7 +43,7 @@ class Spree::SellerAbility
         can :index, Spree::Taxon
         can :show, Spree::Taxon
         can :index, Spree::Taxonomy
-        can :index, Spree::Taxonomy
+        # can :index, Spree::Taxonomy
 
 
         can :index, Spree::StockLocation
@@ -56,6 +56,9 @@ class Spree::SellerAbility
         can :admin, Spree::Image
         can :manage, Spree::Image
         
+        # can :manage, Spree::Variant do |variant|
+        #   variant.product.seller_id == user.seller.id
+        # end
         # #can :index, Spree::Admin::Reports
         # can :manage, Spree::Report
         # can :show, Spree::Report
@@ -71,9 +74,6 @@ class Spree::SellerAbility
       #   order.seller_id == user.seller.last.id
       # end
       # can :create, Spree::Product
-      # can :manage, Spree::Product do |product|
-      #   product.seller_id == user.seller.id
-      # end
       can :manage, Spree::Seller
 
 
@@ -81,12 +81,14 @@ class Spree::SellerAbility
       #   !spree_user.seller.nil? and spree_user.seller.id == user.seller.id
       # end
 
-      can :manage, Spree::ProductProperty do |prodcut_property|
-        product_property.product.seller_id == user.seller.id
-      end
-      can :manage, Spree::Variant do |variant|
-        variant.product.seller_id == user.seller.id
-      end
+      # can :manage, Spree::ProductProperty do |prodcut_property|
+      #   product_property.product.seller_id == user.seller.id
+      # end
+
+
+      # can :manage, Spree::Product do |product|
+      #   product.seller_id == user.seller.id
+      # end
 
       can :manage, Spree::OptionType
       can :manage, Spree::Property
