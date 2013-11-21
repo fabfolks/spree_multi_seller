@@ -5,7 +5,7 @@
       <%= render :partial => "form", :locals => {:f => f} %>
       <div class="form-buttons filter-actions actions" data-hook="buttons">
         <% if spree_current_user.has_spree_role?('admin')%>
-          <% if !@seller.is_active%>
+          <% if !@seller.active%>
             <%= button Spree.t('seller_approve'), 'icon-ok', 'submit', :value => "approve", :id=>"approve_btn" %>
             <span class="or"><%= Spree.t(:or) %></span>
           <%end%>

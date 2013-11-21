@@ -4,7 +4,7 @@ require 'spree/core/validators/email'
 module Spree
 	class Seller < ActiveRecord::Base
 	#attr_accessible :name, :address_1, :address_2, :city, :state, :zip, :country_id, :logo, :banner,
-	#   :roc_number, :business_type_id, :establishment_date, :url, :contact_person_name, :contact_person_email, :phone, :paypal_account_email, :category_ids, :termsandconditions, :is_active, :user_id
+	#   :roc_number, :business_type_id, :establishment_date, :url, :contact_person_name, :contact_person_email, :phone, :paypal_account_email, :category_ids, :termsandconditions, :active, :user_id
 
 	#validates_presence_of :name, :address_2, :city, :state, :country_id#, :business_type_id, :roc_number, :termsandconditions
 	#validates_format_of :contact_person_email, :paypal_account_email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email"
@@ -45,7 +45,7 @@ module Spree
 
 
 
-		#scope :is_active, where(:is_active => true)
+		#scope :active, where(:active => true)
 
 		def address
 			address = [self.address_1, self.try(:address_2), "#{self.city} #{self.try(:state)}", "#{self.try(:zip)}"].compact
@@ -54,7 +54,7 @@ module Spree
 		end
 
 		def approve_seller(user)
-			self.update_attributes(:is_active => true)
+			self.update_attributes(:active => true)
 			add_owner(user)
 			create_user 
 			create_stock_location
@@ -62,8 +62,8 @@ module Spree
 		end
 
     def unapprove_seller(user)
-			#self.is_active = false
-			self.update_attributes(:is_active => false)
+			#self.active = false
+			self.update_attributes(:active => false)
 			add_owner(user)
 			self.users.each {|h| h.destroy}
 			deliver_unapprove_email
@@ -104,7 +104,7 @@ module Spree
 			self.roc_number = 10 unless self.roc_number
 			self.country_id = 67 unless self.country_id
 			self.paypal_account_email = "paypal@pol.com" unless self.paypal_account_email
-			self.is_active = false unless self.is_active
+			self.active = false unless self.active
 			self.contact_person_name = "test.person" unless self.contact_person_name
 			self.address_1 = "adres 1" unless self.address_1
 			self.termsandconditions = true unless self.termsandconditions

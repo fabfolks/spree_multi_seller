@@ -2,7 +2,7 @@
 <% if spree_current_user.has_role? 'admin'%>
 	<%= f.field_container :seller_id do %>
 		<%= f.label :seller_id, "Seller" %>
-		<%= f.collection_select(:seller_id, Spree::Seller.is_active, :id, :name, { :include_blank => 'None' }, { :class => 'select2' }) %>
+		<%= f.collection_select(:seller_id, Spree::Seller.active, :id, :name, { :include_blank => 'None' }, { :class => 'select2' }) %>
 		<%= f.error_message_on :seller_id %>
 	<% end %>
 <%else%>
