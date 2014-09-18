@@ -16,6 +16,7 @@
       </div>
     </div>
 
+
     <div data-hook="new_seller_attrs" class="row">
       <div class="alpha four columns">
         <%= f.field_container :address_1 do %>
@@ -24,11 +25,10 @@
           <%= f.error_message_on :address_1 %>
         <% end %>
       </div>
-
       <div class="four columns">
         <%= f.field_container :city do %>
           <%= f.label :city, "City" %> <span class="required">*</span><br />
-          <%= f.text_field :city, :class => 'fullwidth' %>
+          <%= f.text_field :city, :class => 'fullwidth'%>
           <%= f.error_message_on :city %>
         <% end %>
       </div>
@@ -61,25 +61,5 @@
           <%= f.error_message_on :phone %>
         <% end %>
       </div>
+
     </div>
-    <div data-hook="store locations" class="row">
-      <div class="alpha four columns">
-        <%= link_to Spree.t("stock_locations"), admin_stock_locations_path, :class => "button"%>
-      </div>
-      <% if @seller.owner%>  
-        <div class="alpha four columns">
-          Aprove status last edited by user: <%= @seller.owner.email %>
-        </div> 
-      <% end %>   
-    </div>
-    <% if spree_current_user.has_spree_role?('admin') %>
-      <div data-hook="new_seller_message_1" class="row">
-        <div class="alpha">
-          <%= f.field_container :message do %>
-            <%= f.label :message, "Message for approve or unapprove" %></span><br />
-            <%= f.text_area :message, :cols => 60, :rows => 7, :class => 'fullwidth message'%>
-            <%= f.error_message_on :message %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>

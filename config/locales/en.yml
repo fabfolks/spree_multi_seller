@@ -1,5 +1,17 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  spree:
+    seller_creted: "Seller succesfully created, please wait registration is being reviewed and approved"
+    seller_user_not_created: Seller user can not created some errors
+    seller_not_created: Seller can't created some errors
+    create_seller: register as seller
+    seller_approve: approve
+    seller_unapprove: unapprove
+    seller_approved: "Seller approved and E-mail sended"
+    seller_unapproved: "Seller unapproved and E-mail sended"
+    seller_not_approved: "Seller NOT approved and E-mail NOT sended"
+    seller_not_unapproved: "Seller NOT unapproved and E-mail NOT sended"
+    subject_welcome: "Welcome new seller"
+    subject_approve: "Approved seller"
+    subject_unapprove: "Unapproved seller"
+    logo: "seller logo"
+    seller_unapproved_login: "Please wait admin approve seller"

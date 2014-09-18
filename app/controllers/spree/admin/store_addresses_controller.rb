@@ -11,7 +11,7 @@ module Spree
 			
 			def create
 				@seller = Spree::Seller.find(params[:seller_id])
-				@store_address = @seller.stores.build(params[:store_address])
+				@store_address = @seller.stores.build(store_address_params)
 				if @store_address.save
 					redirect_to new_admin_seller_seller_category_path(@seller)
 				else
@@ -19,6 +19,11 @@ module Spree
 				end
 			end
 
+		private
+
+		def store_address_params
+			 params.require(:store_address).permit!
+		end
 		end	
 	end
 end

@@ -4,7 +4,15 @@
     <legend align="center">Edit Seller</legend>
       <%= render :partial => "form", :locals => {:f => f} %>
       <div class="form-buttons filter-actions actions" data-hook="buttons">
-        <%= button "Update", 'icon-ok' %>
+        <% if spree_current_user.has_spree_role?('admin')%>
+          <% if !@seller.active%>
+            <%= button Spree.t('seller_approve'), 'icon-ok', 'submit', :value => "approve", :id=>"approve_btn" %>
+            <span class="or"><%= Spree.t(:or) %></span>
+          <%end%>
+          <%= button Spree.t('seller_unapprove'), 'icon-remove', 'submit', :value => "unapprove", :id=>"unapprove_btn" %>
+          <span class="or"><%= Spree.t(:or) %></span>
+        <% end %>
+        <%= button "Update", 'icon-ok', 'submit', :value => "Update" %>
         <span class="or"><%= Spree.t(:or) %></span>
         <%= link_to_with_icon 'icon-remove', Spree.t('actions.cancel'), admin_sellers_path, :class => 'button' %>
       </div>

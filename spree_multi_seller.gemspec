@@ -2,13 +2,13 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_multi_seller'
-  s.version     = '2.0.0'
+  s.version     = '2.1.0'
   s.summary     = 'Engine to enable multi-seller feature in a spree store'
   s.description = 'Admin can create multiple sellers with special users to manage their products/stock'
   s.required_ruby_version = '>= 1.9.3'
 
-  s.author    = 'Sumanth N S, Vishal Zambre'
-  s.email     = 'nsready@gmail.com, v.zambre@gmail.com'
+  s.author    = 'Sumanth N S, Vishal Zambre, Al.Bobrov'
+  s.email     = 'nsready@gmail.com, v.zambre@gmail.com, al.bobrov@sv-lab.ru'
   # s.homepage  = 'http://www.spreecommerce.com'
 
   #s.files       = `git ls-files`.split("\n")
@@ -16,7 +16,9 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 2.0.0'
+  s.add_dependency 'spree_core', '~> 2.1.0'
+  # s.add_dependency 'jquery-ui-rails', '~> 4.0.5'
+  # s.add_dependency 'jquery-modal-rails'#, '~> 0.0.3'
 
   s.add_development_dependency 'capybara', '~> 2.1'
   s.add_development_dependency 'coffee-rails'

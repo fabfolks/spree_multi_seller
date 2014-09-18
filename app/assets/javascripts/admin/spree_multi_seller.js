@@ -1,4 +1,6 @@
 //= require admin/spree_backend
+
+
 $(document).ready(function(){
  $(".phone").keyup(function(event) {
     var phone = $(this).val();
@@ -9,10 +11,11 @@ $(document).ready(function(){
       var changed = phone.replace(/[^0-9-+()\s]/gi, '').replace(/[_\s]/g, '')
       $(this).val(changed.substring(0,changed.lenght));
     }
-  });   
-  $('.fancybox').fancybox({
-    padding : 0,
-    openEffect  : 'elastic'
   });
+  // $('.fancybox').fancybox({
+  //   padding : 0,
+  //   openEffect  : 'elastic'
+  // });
 
 });
+

@@ -5,3 +5,11 @@
 .new-seller{
 	float: right;
 }
+
+/*override spree css becouse not look good model form*/
+#content {
+  background-color: white;
+  position: relative;
+  z-index: inherit; 
+  padding: 0;
+  margin-top: 15px; }
